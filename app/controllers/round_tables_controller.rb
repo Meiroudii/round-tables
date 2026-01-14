@@ -7,10 +7,10 @@ class RoundTablesController < ApplicationController
   def show
   end
   def new
-    @round_tables = RoundTable.new
+    @round_table = RoundTable.new
   end
   def create
-    @round_table = RoundTable.new(event_params)
+    @round_table = RoundTable.new(round_table_params)
     if @round_table.save
       redirect_to @round_table, notice: "You founded #{@round.table.title}!"
     else
