@@ -1,0 +1,2 @@
+class RoundTable < ApplicationRecord
+end
