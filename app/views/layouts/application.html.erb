@@ -24,6 +24,14 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= link_to "Profile" %>
+        <%= link_to "Log out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign In", new_user_registration_path %>
+      <% end %>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <main class="container mx-auto mt-28 px-5 flex">
