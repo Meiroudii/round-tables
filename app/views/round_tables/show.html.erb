@@ -3,5 +3,23 @@
 
 <div>
   <p><%= @round_table.description %></p>
+  <p>Founded by: <%= link_to @round_table.founder.username, user_path(@round_table.founder) if @round_table.founder %></p>
 </div>
+
+<% if user_signed_in? %>
+  <% if @round_table.members.include?(current_user) %>
+    <%= button_to "Leave", round_table_round_table_membership_path(@round_table, current_user), method: :delete %>
+  <% else %>
+    <%= button_to "Apply", round_table_round_table_membership_path(@round_table), method: :post %>
+  <% end %>
+<% end %>
+
+<h2>Members</h2>
+<ul>
+  <% @round_table.members.each do |member| %>
+    <li><%= link_to member.username, user_path(member) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Back", round_tables_path %>
 

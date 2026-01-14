@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :round_tables
-  resources :users
+  resources :round_tables do
+    resources :round_table_memberships, only: [ :create, :destroy ]
+  end
+  resources :users, only: [:show]
   root "round_tables#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
