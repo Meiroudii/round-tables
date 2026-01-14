@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_14_012556) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_14_075617) do
+  create_table "round_table_memberships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "joined_round_table_id"
+    t.integer "member_id"
+    t.datetime "updated_at", null: false
+    t.index ["joined_round_table_id"], name: "index_round_table_memberships_on_joined_round_table_id"
+    t.index ["member_id", "joined_round_table_id"], name: "idx_on_member_id_joined_round_table_id_019f3985b9", unique: true
+    t.index ["member_id"], name: "index_round_table_memberships_on_member_id"
+  end
+
   create_table "round_tables", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
