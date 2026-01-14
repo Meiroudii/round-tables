@@ -1,16 +1,19 @@
-<h2>Join Tables</h2>
-
-<%= link_to "Create new table", new_round_table_path %>
-<div>
-  <% if @round_tables.any? %>
-    <table>
-      <% @round_tables.each do |table| %>
-        <tr>
-          <td><%= table.title %></td>
-        </tr>
+<div class="flex flex-col">
+  <h2>Join Tables</h2>
+  <div>
+    <%= link_to "Create new table", new_round_table_path %>
+    <div>
+      <% if @round_tables.any? %>
+        <table>
+          <% @round_tables.each do |table| %>
+            <tr>
+              <td><%= link_to table.title, table %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p>There's no tables right now</p>
       <% end %>
-    </table>
-  <% else %>
-    <p>There's no tables right now</p>
-  <% end %>
+    </div>
+  </div>
 </div>

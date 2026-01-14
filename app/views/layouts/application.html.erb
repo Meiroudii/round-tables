@@ -25,9 +25,11 @@
 
   <body>
     <nav>
+      <%= link_to "Tables", root_path %>
       <% if user_signed_in? %>
-        <%= link_to "Profile" %>
-        <%= button_to "Log out", destroy_user_session_path %>
+        <%= link_to "Establish a Table", new_round_table_path %>
+        <%= link_to "Profile", user_path(current_user) %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign In", new_user_registration_path %>
       <% end %>

@@ -1,10 +1,20 @@
+<div class="flex flex-col">
 <h1><%= @user.username %></h1>
-
-<h3>Founded Tables</h3>
 <div>
+<h3>Founded Tables</h3>
   <ul>
-    <% @user.founded_tables.each do |table| %>
+    <% @user.founded_round_tables.each do |table| %>
       <li><%= table.title %></li>
     <% end %>
   </ul>
+</div>
+
+<div>
+<h3>Joined Tables</h3>
+  <ul>
+    <% @user.round_table_memberships.each do |table| %>
+      <li><%= table.title %></li>
+    <% end %>
+  </ul>
+</div>
 </div>
