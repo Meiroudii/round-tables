@@ -1,0 +1,15 @@
+<h2>Join Tables</h2>
+
+<div>
+  <% if @round_tables.any? %>
+    <table>
+      <% @round_tables.each do |table| %>
+        <tr>
+          <td><%= table.title %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>There's no tables right now</p>
+  <% end %>
+</div>
