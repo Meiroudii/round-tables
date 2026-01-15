@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :username, :email, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,4 +11,13 @@ class User < ApplicationRecord
 
   has_many :round_table_memberships, foreign_key: "member_id", dependent: :destroy
   has_many :joined_round_tables, through: :round_table_memberships
+
+  before_validation :ensure_username_has_value
+
+  private
+    def ensure_username_has_value
+      if username.blank?
+        self.username = email
+      end
+    end
 end
